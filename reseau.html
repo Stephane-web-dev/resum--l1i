@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Résumé - Réseaux Informatiques</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f9ff;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+      color: #0a4c8b;
+    }
+
+    .section {
+      margin-bottom: 25px;
+    }
+
+    button {
+      background-color: #0a4c8b;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none;
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    .illustration {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .illustration img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Résumé : Réseaux Informatiques</h1>
+    <h2>1ère Année Universitaire - Filière Informatique</h2>
+
+    <div class="illustration">
+      <h3>🖼️ Schéma d'un réseau informatique</h3>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Computer-network-diagram.png/800px-Computer-network-diagram.png" alt="Schéma réseau informatique">
+      <p style="font-size: 0.9em; color: #555;">Source : Wikipédia - Schéma de base d'un réseau</p>
+    </div>
+
+    <div class="section">
+      <button onclick="toggle('definition')">📌 Définition du réseau</button>
+      <div id="definition" class="hidden">
+        Un réseau informatique est un ensemble d’ordinateurs et d’équipements reliés entre eux pour échanger des données et partager des ressources (imprimante, internet, fichiers...).
+      </div>
+    </div>
+
+    <div class="section">
+      <button onclick="toggle('types')">🔗 Types de réseaux</button>
+      <div id="types" class="hidden">
+        <ul>
+          <li><strong>LAN (Local Area Network)</strong> : réseau local dans un bâtiment ou maison.</li>
+          <li><strong>WAN (Wide Area Network)</strong> : réseau étendu, comme Internet.</li>
+          <li><strong>MAN (Metropolitan Area Network)</strong> : entre plusieurs bâtiments d’une ville.</li>
+          <li><strong>WLAN</strong> : LAN sans fil (Wi-Fi).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <button onclick="toggle('materiel')">💻 Matériel réseau</button>
+      <div id="materiel" class="hidden">
+        <ul>
+          <li><strong>Routeur</strong> : connecte différents réseaux.</li>
+          <li><strong>Switch</strong> : relie plusieurs appareils dans un même réseau.</li>
+          <li><strong>Modem</strong> : relie le réseau local à Internet.</li>
+          <li><strong>Carte réseau</strong> : permet la connexion d’un PC au réseau.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <button onclick="toggle('protocoles')">📡 Protocoles de communication</button>
+      <div id="protocoles" class="hidden">
+        <ul>
+          <li><strong>TCP/IP</strong> : base de l’Internet, assure l'envoi des données.</li>
+          <li><strong>HTTP / HTTPS</strong> : permet l'accès aux sites web.</li>
+          <li><strong>FTP</strong> : transfert de fichiers.</li>
+          <li><strong>DNS</strong> : traduction des noms de domaine en adresses IP.</li>
+        </ul><div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <button onclick="toggle('modele')">📶 Modèle OSI</button>
+      <div id="modele" class="hidden">
+        Le modèle OSI est un modèle en 7 couches décrivant comment les données circulent sur un réseau :
+        <ol>
+          <li>Couche 1 : Physique</li>
+          <li>Couche 2 : Liaison de données</li>
+          <li>Couche 3 : Réseau</li>
+          <li>Couche 4 : Transport</li>
+          <li>Couche 5 : Session</li>
+          <li>Couche 6 : Présentation</li>
+          <li>Couche 7 : Application</li>
+        </ol>
+      </div>
+    </div>
+
+    <footer>
+      Réalisé par René Stéphane – Étudiant en Informatique – CNTEMAD Antsirabe – 2025
+    </footer>
+  </div>
+
+  <script>
+    function toggle(id) {
+      const el = document.getElementById(id);
+      el.classList.toggle('hidden');
+    }
+  </script>
+</body>
+</html>

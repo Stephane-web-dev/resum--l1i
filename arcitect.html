@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Architecture de l'Ordinateur</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #eef3f7;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+      color: #0a4c8b;
+    }
+
+    .section {
+      margin-bottom: 25px;
+    }
+
+    button {
+      background-color: #0a4c8b;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none;
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    .illustration {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .illustration img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Résumé : Architecture de l'Ordinateur</h1>
+    <h2>1ère Année Universitaire - Filière Informatique</h2>
+
+    <div class="illustration">
+      <h3>🖼️ Schéma de l'architecture d’un ordinateur</h3>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Architecture_Ordinateur.svg/1024px-Architecture_Ordinateur.svg.png" alt="Architecture ordinateur">
+      <p style="font-size: 0.9em; color: #555;">Source : Wikipédia – Architecture de Von Neumann</p>
+    </div>
+
+    <div class="section">
+      <button onclick="toggle('intro')">📌 Introduction</button>
+      <div id="intro" class="hidden">
+        L'architecture de l'ordinateur désigne la structure interne des composants matériels et la manière dont ils interagissent pour traiter les données et exécuter les instructions.
+      </div>
+    </div>
+
+    <div class="section">
+      <button onclick="toggle('composants')">🧩 Composants principaux</button>
+      <div id="composants" class="hidden">
+        <ul>
+          <li><strong>Unité Centrale (UC)</strong> : Ensemble formé par le processeur et la mémoire principale. C’est le cœur de traitement de l’ordinateur.</li>
+          <li><strong>Processeur (CPU)</strong> : Cerveau de l’ordinateur. Il comprend :
+            <ul>
+              <li><em>Unité de contrôle</em> : dirige le flux des instructions.</li>
+              <li><em>Unité arithmétique et logique (UAL)</em> : effectue calculs et comparaisons.</li>
+            </ul>
+          </li>
+          <li><strong>Mémoire vive (RAM)</strong> : Stocke temporairement les données et instructions utilisées. Rapide mais volatile (se vide à l’arrêt).</li>
+          <li><strong>Mémoire morte (ROM)</strong> : Contient des données permanentes (ex : BIOS) nécessaires au démarrage.</li>
+          <li><strong>Bus</strong> : Système de communication interne permettant la circulation des données entre les composants. On distingue :
+            <ul>
+              <li><em>Bus de données</em></li>
+              <li><em>Bus d’adresses</em></li>
+              <li><em>Bus de contrôle</em></li>
+            </ul>
+          </li>
+          <li><strong>Périphériques</strong> : Appareils connectés à l’ordinateur :
+            <ul>
+              <li><em>Entrée</em> : clavier, souris, scanner</li>
+              <li><em>Sortie</em> : écran, imprimante</li>
+              <li><em>Stockage</em> : disque dur, SSD, clé USB</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <button onclick="toggle('fonctionnement')">⚙️ Cycle de fonctionnement</button>
+      <div id="fonctionnement" class="hidden">
+        Le processeur exécute les instructions selon le cycle :
+        <ol>
+          <li><strong>Fetch</strong> : récupérer l’instruction depuis la mémoire</li>
+          <li><strong>Decode</strong> : analyser et comprendre l’instruction</li>
+          <li><strong>Execute</strong> : exécuter l’instruction</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="section">
+      <button onclick="toggle('types')">📘 Types d’architectures</button>
+      <div id="types" class="hidden">
+        <ul>
+          <li><strong>Von Neumann</strong> : mémoire unique pour instructions et données</li>
+          <li><strong>Harvard</strong> : mémoires séparées pour les instructions et les données</li>
+          <li><strong>Architecture parallèle</strong> : plusieurs processeurs travaillent en parallèle</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <button onclick="toggle('importance')">🔍 Pourquoi l'apprendre ?</button>
+      <div id="importance" class="hidden">
+        Comprendre l’architecture permet de programmer efficacement, diagnostiquer les pannes, mieux gérer les ressources et comprendre le fonctionnement des logiciels et systèmes.
+      </div>
+    </div>
+
+    <footer>
+      Réalisé par René Stéphane – Étudiant en Informatique – CNTEMAD Antsirabe – 2025
+    </footer>
+  </div>
+
+  <script>
+    function toggle(id) {
+      const el = document.getElementById(id);
+      el.classList.toggle('hidden');
+    }
+  </script>
+</body>
+</html>

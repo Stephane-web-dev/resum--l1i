@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Résumé Algorithmique</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      padding: 20px;
+      margin: 0;
+    }
+
+    h1 {
+      text-align: center;
+      color: #222;
+      margin-bottom: 30px;
+    }
+
+    .section {
+      background: #fff;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .section h2 {
+      margin: 0;
+      padding: 15px;
+      background: #0066cc;
+      color: white;
+      cursor: pointer;
+      font-size: 18px;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .content {
+      display: none;
+      padding: 15px;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    code {
+      background: #eee;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+
+    ul {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 22px; }
+      .section h2 { font-size: 16px; }
+      .content { font-size: 15px; }
+    }
+     footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: #666;
+    } 
+
+  </style>
+</head>
+<body>
+
+<h1>📘 Résumé - Algorithmique</h1>
+
+<div class="section">
+  <h2 onclick="toggle('org')">🧭 Organigramme</h2>
+  <div class="content" id="org">
+    <p>Un organigramme est une représentation graphique d’un algorithme (logique visuelle).</p>
+    <ul>
+      <li><strong>Rectangle</strong> : instruction</li>
+      <li><strong>Losange</strong> : condition</li>
+      <li><strong>Ovale</strong> : début / fin</li>
+    </ul>
+    <p>Exemple : Test si un nombre est pair ou impair.</p>
+  </div>
+</div>
+
+<div class="section">
+  <h2 onclick="toggle('cond')">🔀 Structures Conditionnelles</h2>
+  <div class="content" id="cond">
+    <p>Permettent de prendre des décisions dans un algorithme.</p>
+    <ul>
+      <li><code>Si condition alors ...</code></li>
+      <li><code>Si ... alors ... sinon ...</code></li>
+      <li><code>selon valeur ... cas ... fin selon</code></li>
+    </ul>
+    <p>Exemple :<br>
+      <code>
+        si note &gt;= 10 alors afficher "Admis"<br>
+        sinon afficher "Ajourné"
+      </code>
+    </p>
+  </div>
+</div>
+
+<div class="section">
+  <h2 onclick="toggle('boucle')">🔁 Boucles</h2>
+  <div class="content" id="boucle">
+    <p>Utilisées pour répéter des actions.</p>
+    <ul>
+      <li><strong>Pour</strong> (for) : boucle à nombre fixe</li>
+      <li><strong>Tant que</strong> (while) : boucle conditionnelle</li>
+      <li><strong>Répéter ... jusqu’à</strong> : s’exécute au moins une fois</li>
+    </ul>
+    <p>Exemple boucle Pour :<br>
+      <code>
+        pour i de 1 à 10 faire<br>
+        &nbsp;&nbsp;afficher i<br>
+        fin pour
+      </code>
+    </p>
+  </div>
+</div>
+
+<div class="section">
+  <h2 onclick="toggle('tab')">📊 Tableaux</h2>
+  <div class="content" id="tab">
+    <p>Un tableau est une liste d’éléments (ex: note[1..5]).</p>
+    <p>Permet de stocker plusieurs valeurs sous une seule variable.</p>
+    <p>Accès : <code>note[1]</code>, <code>note[i]</code></p>
+    <p>Utilisation : boucle + tableau → affichage ou calcul</p>
+  </div>
+</div>
+
+<div class="section">
+  <h2 onclick="toggle('proc')">⚙️ Procédures et Fonctions</h2>
+  <div class="content" id="proc">
+    <p>Permettent de découper un programme en blocs réutilisables.</p>
+    <ul>
+      <li><strong>Procédure</strong> : ne retourne rien</li>
+      <li><strong>Fonction</strong> : retourne une valeur</li>
+    </ul>
+    <p>Exemple fonction :</p>
+    <code>
+      fonction carré(x) : entier<br>
+      &nbsp;&nbsp;retourner x * x<br>
+      fin fonction
+    </code>
+  </div>
+</div>
+
+<div class="section">
+  <h2 onclick="toggle('tri')">🧮 Algorithmes de tri</h2>
+  <div class="content" id="tri">
+    <p>Utilisés pour organiser les éléments d’un tableau.</p>
+    <ul>
+      <li><strong>Tri à bulles</strong> (bubble sort) : échange voisin</li>
+      <li><strong>Tri par sélection</strong> : cherche min et échange</li>
+      <li><strong>Tri par insertion</strong> : insère à la bonne place</li>
+    </ul>
+    <p>Exemple (tri à bulles) :</p>
+    <code>
+      pour i de 1 à n-1<br>
+      &nbsp;&nbsp;pour j de 1 à n-i<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;si t[j] &gt; t[j+1] alors échanger<br>
+      fin pour
+    </code>
+  </div>
+</div>
+ <footer>
+      Réalisé par René Stéphane – Étudiant en Informatique – CNTEMAD Antsirabe – 2025
+    </footer>
+ 
+<script>
+  function toggle(id) {
+    const section = document.getElementById(id);
+    section.style.display = (section.style.display === "block") ? "none" : "block";
+  }
+</script>
+
+</body>
+</html>

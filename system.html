@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Résumé - Système d'exploitation</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5faff;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+      color: #0a4c8b;
+    }
+
+    .section {
+      margin-bottom: 25px;
+    }
+
+    button {
+      background-color: #0a4c8b;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none;
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    .illustration {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .illustration img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Résumé : Systèmes d’exploitation</h1>
+    
+    <div class="illustration">
+      <h3>🖼️ Schéma d’un système d’exploitation</h3>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Systemsoftware-overview.svg/800px-Systemsoftware-overview.svg.png" alt="Schéma système d'exploitation">
+      <p style="font-size: 0.9em; color: #555;">Source : Wikimedia – Architecture de système</p>
+    </div>
+
+    <div class="section">
+      <button onclick="toggle('definition')">📌 Définition</button>
+      <div id="definition" class="hidden">
+        Un système d'exploitation (OS) est un logiciel essentiel qui permet à l'utilisateur et aux programmes d'interagir avec le matériel de l'ordinateur.
+      </div>
+    </div>
+
+    <div class="section">
+      <button onclick="toggle('fonctions')">🛠️ Fonctions principales</button>
+      <div id="fonctions" class="hidden">
+        <ul>
+          <li><strong>Gestion des processus</strong> : exécution et planification des tâches.</li>
+          <li><strong>Gestion de la mémoire</strong> : allocation et libération de la RAM.</li>
+          <li><strong>Gestion des fichiers</strong> : lecture, écriture et organisation des fichiers.</li>
+          <li><strong>Gestion des périphériques</strong> : communication avec le clavier, la souris, les imprimantes, etc.</li>
+          <li><strong>Interface utilisateur</strong> : ligne de commande ou interface graphique (GUI).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <button onclick="toggle('types')">📦 Types de systèmes</button>
+      <div id="types" class="hidden">
+        <ul>
+          <li><strong>Monotâche</strong> : exécute un programme à la fois (ex : MS-DOS).</li>
+          <li><strong>Multitâche</strong> : exécute plusieurs programmes simultanément (ex : Windows, Linux).</li>
+          <li><strong>Temps réel</strong> : réaction immédiate, utilisé dans l’industrie.</li>
+          <li><strong>Mobile</strong> : conçu pour smartphones/tablettes (Android, iOS).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <button onclick="toggle('exemples')">💻 Exemples d’OS connus</button>
+      <div id="exemples" class="hidden">
+        <ul>
+          <li>Windows (Microsoft)</li>
+          <li>Linux (Ubuntu, Debian, Fedora…)</li>
+          <li>macOS (Apple)</li>
+          <li>Android (Google)</li>
+          <li>iOS (Apple)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <button onclick="toggle('importance')">🔍 Importance pour les développeurs</button>
+      <div id="importance" class="hidden">
+        Connaître le système d’exploitation permet de mieux comprendre la gestion des ressources, la programmation système, l’optimisation, la sécurité et les interactions avec le matériel.
+      </div>
+    </div>
+
+    <footer>
+      Réalisé par René Stéphane – Étudiant en Informatique – CNTEMAD Antsirabe – 2025
+    </footer>
+  </div>
+
+  <script>
+    function toggle(id) {
+      const el = document.getElementById(id);
+      el.classList.toggle('hidden');
+    }
+  </script>
+</body>
+</html>

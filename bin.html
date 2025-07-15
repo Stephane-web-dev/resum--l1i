@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Système binaire & Représentations numériques</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f1f8ff;
+      color: #222;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #0a4c8b;
+    }
+
+    h2 {
+      background-color: #0a4c8b;
+      color: white;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .section {
+      display: none;
+      padding: 10px;
+      background-color: #eef6ff;
+      margin-bottom: 20px;
+      border-radius: 6px;
+    }
+
+    .formula {
+      background: #fff8dc;
+      padding: 10px;
+      border-left: 4px solid #f0ad4e;
+      margin: 10px 0;
+      font-family: monospace;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
+    }
+      #display { width: 100%; height: 50px; font-size: 24px; padding: 10px; margin-bottom: 15px; background: white; border-radius: 5px; border: 2px solid #333; text-align: right; }
+  .buttons { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  button { padding: 15px 0; font-size: 20px; border: none; border-radius: 5px; background: #222; color: white; cursor: pointer; }
+  button:hover { background: #555; }
+  button.operator { background: #0066cc; }
+  button.equal { background: #28a745; grid-column: span 2; }
+  button.clear { background: #dc3545; grid-column: span 2; }
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Système Binaire & Représentations Numériques</h1>
+
+    <h2 onclick="toggle('bases')">🔢 Systèmes de numérotation</h2>
+    <div class="section" id="bases">
+      <p>Les systèmes utilisés en informatique :</p>
+      <ul>
+        <li><strong>Binaire (base 2)</strong> : 0 et 1</li>
+        <li><strong>Décimal (base 10)</strong> : 0 à 9</li>
+        <li><strong>Hexadécimal (base 16)</strong> : 0 à F (0-9 + A-F)</li>
+      </ul>
+      <table>
+        <thead>
+          <tr><th>Décimal</th><th>Binaire</th><th>Hexa</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>0</td><td>0000</td><td>0x0</td></tr>
+          <tr><td>1</td><td>0001</td><td>0x1</td></tr>
+          <tr><td>5</td><td>0101</td><td>0x5</td></tr>
+          <tr><td>10</td><td>1010</td><td>0xA</td></tr>
+          <tr><td>15</td><td>1111</td><td>0xF</td></tr>
+          <tr><td>255</td><td>11111111</td><td>0xFF</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 onclick="toggle('complement')">➕ Complément à deux</h2>
+    <div class="section" id="complement">
+      <p>Utilisé pour représenter les entiers signés :</p>
+      <ul>
+        <li>Bit de poids fort : signe (0 = +, 1 = -)</li>
+        <li>Pour -n : inversion des bits de n puis +1</li>
+      </ul>
+      <div class="formula">Exemple : -5 en 8 bits → 11111011</div>
+    </div>
+
+    <h2 onclick="toggle('virgule_fixe')">🔸 Représentation à virgule fixe</h2>
+    <div class="section" id="virgule_fixe">
+      <p>La position de la virgule est fixée à l’avance.</p>
+      <ul>
+        <li>Ex : 8 bits pour la partie entière, 8 bits pour la partie fractionnaire</li>
+        <li>Simple à calculer, mais peu flexible</li>
+      </ul>
+    </div>
+
+    <h2 onclick="toggle('virgule_flot')">🔹 Représentation à virgule flottante</h2>
+    <div class="section" id="virgule_flot">
+      <p>Permet de représenter des très grands et très petits nombres :</p>
+      <ul>
+        <li>Forme : <code>± mantisse × base^exposant</code></li>
+        <li>Ex : IEEE 754 (32 bits) = 1 bit signe + 8 bits exposant + 23 bits mantisse</li>
+        <li>Supporte les valeurs très petites, très grandes, NaN et ±Inf</li>
+      </ul>
+      <div class="formula">Ex : 32 bits flottant pour 12.25 → 0 10000010 10001000000000000000000</div>
+    </div>
+
+    <h2 onclick="toggle('erreurs')">⚠️ Limites & erreurs</h2>
+    <div class="section" id="erreurs">
+      <ul>
+        <li>Arrondis dus à la représentation binaire limitée</li>
+        <li>Erreurs de conversion entre décimal/binaire</li>
+        <li>Perte de précision si trop peu de bits</li>
+      </ul>
+      <div class="formula">Ex : 0.1 décimal ≠ 0.000110011001... binaire → erreur d'arrondi</div>
+    </div>
+<h2 onclick="toggle('calc')">Calculatrice binaire avec virgule</h2>
+<div id="calc" class="section">
+<div id="display">0</div>
+
+<div class="buttons">
+  <button onclick="append('1')">1</button>
+  <button onclick="append('0')">0</button>
+  <button onclick="append(',')">,</button>
+  <button class="operator" onclick="append('+')">+</button>
+  <button class="operator" onclick="append('-')">-</button>
+
+  <button class="operator" onclick="append('*')">&times;</button>
+  <button class="operator" onclick="append('/')">&divide;</button>
+  <button class="clear" onclick="clearDisplay()">C</button>
+  <button class="equal" onclick="calculate()">=</button>
+</div>
+</div>
+<footer>
+      Réalisé par René Stéphane – Étudiant en Informatique – CNTEMAD Antsirabe – 2025
+    </footer>
+
+</div>
+<script>
+  const display = document.getElementById('display');
+
+  function append(char) {
+    const operators = ['+', '-', '*', '/'];
+    let text = display.textContent;
+
+    if (text === "0" && !operators.includes(char)) {
+      if (char === ',') {
+        display.textContent = "0,";
+      } else {
+        display.textContent = char;
+      }
+    } else {
+      // Eviter double opérateurs d'affilée
+      const lastChar = text.slice(-1);
+      if (operators.includes(char) && operators.includes(lastChar)) {
+        display.textContent = text.slice(0, -1) + char;
+      } else {
+        // Éviter plusieurs virgules dans un même nombre
+        if (char === ',') {
+          // Trouver le dernier opérateur
+          let lastOpIndex = -1;
+          for (let i = text.length - 1; i >= 0; i--) {
+            if (operators.includes(text[i])) {
+              lastOpIndex = i;
+              break;
+            }
+          }
+          let currentNumber = text.slice(lastOpIndex + 1);
+          if (currentNumber.includes(',')) {
+            // déjà une virgule dans le nombre en cours, ne pas ajouter
+            return;
+          }
+        }
+        display.textContent += char;
+      }
+    }
+  }
+
+  // Fonction pour convertir un nombre binaire à virgule en décimal
+  function binaryToDecimal(binStr) {
+    if (!binStr.includes(',')) {
+      return parseInt(binStr, 2);
+    }
+    const [intPart, fracPart] = binStr.split(',');
+    let intDecimal = intPart ? parseInt(intPart, 2) : 0;
+    let fracDecimal = 0;
+    for (let i = 0; i < fracPart.length; i++) {
+      if (fracPart[i] === '1') {
+        fracDecimal += 1 / Math.pow(2, i + 1);
+      }
+    }
+    return intDecimal + fracDecimal;
+  }
+
+  // Convertir un nombre décimal (flottant) en binaire avec virgule
+  function decimalToBinary(num, precision = 10) {
+    if (num < 0) return '-' + decimalToBinary(-num, precision);
+
+    const intPart = Math.floor(num);
+    let fracPart = num - intPart;
+
+    let intStr = intPart.toString(2);
+
+    if (fracPart === 0) return intStr;
+
+    let fracStr = '';
+    let count = 0;
+    while (fracPart > 0 && count < precision) {
+      fracPart *= 2;
+      if (fracPart >= 1) {
+        fracStr += '1';
+        fracPart -= 1;
+      } else {
+        fracStr += '0';
+      }
+      count++;
+    }
+    return intStr + ',' + fracStr;
+  }
+
+  function clearDisplay() {
+    display.textContent = "0";
+  }
+
+  function calculate() {
+    try {
+      const expr = display.textContent;
+      const operators = ['+', '-', '*', '/'];
+
+      // Tokenize expression: numbers (avec virgule) et opérateurs
+      const tokens = expr.match(/([01]+(?:,[01]+)?|[\+\-\*\/])/g);
+
+      if (!tokens) throw "Expression invalide";
+
+      // Convertir chaque nombre binaire avec virgule en décimal
+      let decExpr = tokens.map(token => {
+        if (!operators.includes(token)) {
+          return binaryToDecimal(token);
+        } else {
+          return token;
+        }
+      }).join('');
+
+      // Évaluer l'expression décimale
+      let result = eval(decExpr);
+
+      if (isNaN(result) || !isFinite(result)) throw "Erreur de calcul";
+
+      // Convertir le résultat en binaire avec virgule
+      let binResult = decimalToBinary(result, 12);
+
+      display.textContent = binResult;
+
+    } catch (e) {
+      display.textContent = "Erreur";
+    }
+  }
+    function toggle(id) {
+      const section = document.getElementById(id);
+      section.style.display = section.style.display === "none" || section.style.display === "" ? "block" : "none";
+    }
+  </script>
+</body>
+</html>

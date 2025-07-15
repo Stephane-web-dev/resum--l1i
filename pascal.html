@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Résumé Pascal – Complet</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f9ff;
+      margin: 0;
+      padding: 20px;
+      color: #222;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #0a4c8b;
+      text-align: center;
+    }
+
+    .section h2 {
+      background: #0a4c8b;
+      color: white;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 30px;
+    }
+
+    .hidden {
+      display: none;
+      margin-top: 10px;
+    }
+
+    pre {
+      background: #f1f1f1;
+      padding: 10px;
+      border-left: 5px solid #0a4c8b;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
+    }
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: #666;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Résumé Pascal</h1>
+
+    <div class="section">
+      <h2 onclick="toggle('intro')">🔰 Introduction à Pascal</h2>
+      <div class="hidden" id="intro">
+        <p>Pascal est un langage structuré, utilisé pour enseigner les bases de la programmation (variables, conditions, boucles, procédures...)</p>
+      </div>
+
+      <h2 onclick="toggle('structure')">📌 Structure d’un programme Pascal</h2>
+      <div class="hidden" id="structure">
+        <pre>
+program MonProgramme;
+uses crt;
+
+var
+  x: Integer;
+
+begin
+  writeln('Bonjour Pascal');
+  readln;
+end.
+        </pre>
+      </div>
+
+      <h2 onclick="toggle('types')">🔠 Types de données</h2>
+      <div class="hidden" id="types">
+        <ul>
+          <li><strong>Integer</strong> : nombre entier</li>
+          <li><strong>Real</strong> : nombre réel</li>
+          <li><strong>Char</strong> : caractère</li>
+          <li><strong>String</strong> : chaîne de caractères</li>
+          <li><strong>Boolean</strong> : vrai/faux</li>
+        </ul>
+      </div>
+
+      <h2 onclick="toggle('variables')">📥 Variables & Constantes</h2>
+      <div class="hidden" id="variables">
+        <pre>
+var
+  nom: String;
+  age: Integer;
+
+const
+  PI = 3.14;
+        </pre>
+      </div>
+
+      <h2 onclick="toggle('conditions')">🔀 Conditions complètes</h2>
+      <div class="hidden" id="conditions">
+        <pre>
+if a > b then
+  writeln('a est plus grand')
+else if a = b then
+  writeln('a est égal à b')
+else
+  writeln('b est plus grand');
+
+case jour of
+  1: writeln('Lundi');
+  2: writeln('Mardi');
+  3: writeln('Mercredi');
+else
+  writeln('Jour inconnu');
+end;
+        </pre>
+      </div>
+
+      <h2 onclick="toggle('boucles')">🔁 Boucles</h2>
+      <div class="hidden" id="boucles">
+        <pre>
+for i := 1 to 5 do
+  writeln(i);
+
+while x < 10 do
+begin
+  x := x + 1;
+end;
+
+repeat
+  x := x - 1;
+until x = 0;
+        </pre>
+      </div>
+
+      <h2 onclick="toggle('tableaux')">📊 Tableaux</h2>
+      <div class="hidden" id="tableaux">
+        <pre>
+var
+  tab: array[1..5] of Integer;
+  i: Integer;
+
+begin
+  for i := 1 to 5 do
+    tab[i] := i * 10;
+
+  writeln('Valeur en position 3 : ', tab[3]);
+end.
+        </pre>
+      </div>
+
+      <h2 onclick="toggle('tri')">📈 Tri d’un tableau (sélection)</h2>
+      <div class="hidden" id="tri">
+        <pre>
+var
+  tab: array[1..5] of Integer;
+  i, j, tmp: Integer;
+
+begin
+  for i := 1 to 4 do
+    for j := i + 1 to 5 do
+      if tab[i] > tab[j] then
+      begin
+        tmp := tab[i];
+        tab[i] := tab[j];
+        tab[j] := tmp;
+      end;
+
+  for i := 1 to 5 do
+    writeln(tab[i]);
+end.
+        </pre>
+      </div>
+
+      <h2 onclick="toggle('procedures')">🧩 Procédures & Fonctions</h2>
+      <div class="hidden" id="procedures">
+        <pre>
+procedure Bonjour;
+begin
+  writeln('Salut !');
+end;
+
+function Carré(n: Integer): Integer;
+begin
+  Carré := n * n;
+end;
+        </pre>
+      </div>
+
+      <h2 onclick="toggle('io')">🖨️ Entrées / Sorties</h2>
+      <div class="hidden" id="io">
+        <pre>
+var
+  nom: String;
+begin
+  write('Entrez votre nom : ');
+  readln(nom);
+  writeln('Bonjour ', nom);
+end.
+        </pre>
+      </div>
+    </div>
+    <footer>
+      Réalisé par René Stéphane – Étudiant en Informatique – CNTEMAD Antsirabe – 2025
+    </footer>
+
+  </div>
+
+  <script>
+    function toggle(id) {
+      const el = document.getElementById(id);
+      el.classList.toggle("hidden");
+    }
+  </script>
+</body>
+</html>

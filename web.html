@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Résumé Web Complet</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #222;
+    }
+
+    .section {
+      background: white;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .section h2 {
+      margin: 0;
+      padding: 15px;
+      background: #333;
+      color: white;
+      cursor: pointer;
+      font-size: 18px;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .content {
+      display: none;
+      padding: 15px;
+      color: #333;
+    }
+
+    .content p {
+      margin: 10px 0;
+    }
+
+    code {
+      background: #eee;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 20px; }
+      .section h2 { font-size: 16px; }
+      .content { font-size: 14px; }
+    }
+       footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: #666;
+    } 
+  </style>
+</head>
+<body>
+
+<h1>📚 Résumé Technologie web</h1>
+
+<div class="section">
+  <h2 onclick="toggle('html')">🔴 HTML (Structure)</h2>
+  <div class="content" id="html">
+    <p><strong>HTML</strong> permet de structurer une page web.</p>
+    <ul>
+      <li><code>&lt;h1&gt;</code> à <code>&lt;h6&gt;</code> : titres</li>
+      <li><code>&lt;p&gt;</code> : paragraphe</li>
+      <li><code>&lt;a href=""&gt;</code> : lien</li>
+      <li><code>&lt;img src="" /&gt;</code> : image</li>
+      <li><code>&lt;div&gt;</code>, <code>&lt;span&gt;</code> : conteneurs</li>
+    </ul>
+    <p>HTML = <strong>ossature</strong> de la page.</p>
+  </div>
+</div>
+
+<div class="section">
+  <h2 onclick="toggle('css')">🔵 CSS (Style)</h2>
+  <div class="content" id="css">
+    <p><strong>CSS</strong> stylise le contenu HTML (couleurs, tailles, positions).</p>
+    <ul>
+      <li><code>color</code>, <code>background</code>, <code>font-size</code></li>
+      <li><code>padding</code>, <code>margin</code>, <code>border</code></li>
+      <li><code>display</code>, <code>flex</code>, <code>grid</code></li>
+    </ul>
+    <p>CSS = <strong>apparence</strong> et design.</p>
+  </div>
+</div>
+
+<div class="section">
+  <h2 onclick="toggle('js')">🟢 JavaScript (Interactivité)</h2>
+  <div class="content" id="js">
+    <p><strong>JavaScript</strong> rend la page interactive (clics, animations, logique).</p>
+    <ul>
+      <li><code>document.getElementById()</code>, <code>addEventListener()</code></li>
+      <li><code>if</code>, <code>for</code>, <code>function()</code></li>
+      <li>Peut modifier HTML/CSS via le DOM</li>
+    </ul>
+    <p>JS = <strong>comportement</strong> dynamique de la page.</p>
+  </div>
+</div>
+
+<div class="section">
+  <h2 onclick="toggle('bootstrap')">🟣 Bootstrap (Framework CSS)</h2>
+  <div class="content" id="bootstrap">
+    <p><strong>Bootstrap</strong> est un framework CSS prêt à l'emploi.</p>
+    <ul>
+      <li>Classes comme <code>.container</code>, <code>.btn</code>, <code>.row</code></li>
+      <li>Système de grille responsive en 12 colonnes</li>
+      <li>Besoin de <code>cdn bootstrap</code> dans le HTML</li>
+    </ul>
+    <p>Bootstrap = <strong>style rapide</strong> + responsive.</p>
+  </div>
+</div>
+
+<div class="section">
+  <h2 onclick="toggle('tailwind')">🟡 Tailwind CSS (Utility First)</h2>
+  <div class="content" id="tailwind">
+    <p><strong>Tailwind CSS</strong> utilise des classes utilitaires comme :</p>
+    <ul>
+      <li><code>bg-red-500</code>, <code>text-xl</code>, <code>p-4</code></li>
+      <li>Évite le CSS personnalisé</li>
+      <li>Très flexible pour le design</li>
+    </ul>
+    <p>Tailwind = <strong>style minimaliste</strong> rapide à coder.</p>
+  </div>
+</div>
+
+<div class="section">
+  <h2 onclick="toggle('api')">🟠 API (Interface d'Application)</h2>
+  <div class="content" id="api">
+    <p><strong>API</strong> = moyen d’accéder à des données d’un serveur ou d’un service.</p>
+    <ul>
+      <li>Exemple : météo, traducteur, données utilisateur</li>
+      <li>Utilisation : <code>fetch(url)</code> + <code>then()</code></li>
+    </ul>
+    <p>API = <strong>communication</strong> entre ton site et d'autres services.</p>
+  </div>
+</div>
+
+<div class="section">
+  <h2 onclick="toggle('dom')">⚙️ DOM (Document Object Model)</h2>
+  <div class="content" id="dom">
+    <p><strong>DOM</strong> = représentation du HTML sous forme d’arbre manipulable avec JS.</p>
+    <ul>
+      <li><code>document.querySelector()</code></li>
+      <li><code>element.innerHTML</code>, <code>style.color</code></li>
+      <li><code>createElement()</code>, <code>appendChild()</code></li>
+    </ul>
+    <p>DOM = <strong>pont entre JS et HTML</strong>.</p>
+  </div>
+</div>
+ <footer>
+      Réalisé par René Stéphane – Étudiant en Informatique – CNTEMAD Antsirabe – 2025
+    </footer>
+
+<script>
+  function toggle(id) {
+    const el = document.getElementById(id);
+    el.style.display = (el.style.display === "block") ? "none" : "block";
+  }
+</script>
+
+</body>
+</html>

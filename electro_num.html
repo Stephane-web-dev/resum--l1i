@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <title>Électronique Numérique - Résumé</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #eef5ff;
+      margin: 0;
+      padding: 20px;
+      color: #222;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #0a4c8b;
+    }
+    .container h2 {
+      background: #0a4c8b;
+      color: white;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 30px;
+    }
+    .hidden {
+      display: none;
+      margin-top: 10px;
+    }
+    pre {
+      background: #f1f1f1;
+      padding: 10px;
+      border-left: 5px solid #0a4c8b;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 10px 0;
+    }
+    th, td {
+      border: 1px solid #999;
+      padding: 6px;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      .container { padding: 15px; }
+    }
+      footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: #666;
+    }
+ 
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Résumé – Électronique Numérique</h1>
+
+    <h2 onclick="toggle('intro')">⚡ Introduction</h2>
+    <div class="hidden" id="intro">
+      <ul>
+        <li>L'électronique numérique utilise des signaux discrets (0 et 1).</li>
+        <li>Un <strong>bit</strong> représente la plus petite unité d'information.</li>
+        <li>Les systèmes numériques traitent les données avec des circuits logiques.</li>
+      </ul>
+    </div>
+
+    <h2 onclick="toggle('portes')">🧮 Portes logiques</h2>
+    <div class="hidden" id="portes">
+      <ul>
+        <li>NOT (NON) : inverse la valeur (¬A)</li>
+        <li>AND (ET) : 1 si A et B sont 1</li>
+        <li>OR (OU) : 1 si A ou B est 1</li>
+        <li>NAND, NOR, XOR, XNOR : combinaisons avancées</li>
+      </ul>
+      <pre>
+Table de vérité XOR:
+A | B | A ⊕ B
+--|---|-------
+0 | 0 |   0
+0 | 1 |   1
+1 | 0 |   1
+1 | 1 |   0
+      </pre>
+    </div>
+
+    <h2 onclick="toggle('numeration')">📏 Systèmes de numérotation</h2>
+    <div class="hidden" id="numeration">
+      <ul>
+        <li><strong>Décimal (base 10)</strong>: chiffres de 0 à 9</li>
+        <li><strong>Binaire (base 2)</strong>: chiffres 0 et 1</li>
+        <li><strong>Hexadécimal (base 16)</strong>: 0–9 et A–F</li>
+      </ul>
+      <pre>
+Binaire  → Décimal : 1011 = 1×8 + 0×4 + 1×2 + 1×1 = 11
+Décimal → Binaire : 13 = 1101
+      </pre>
+    </div>
+
+    <h2 onclick="toggle('conversion')">🔢 Conversion entre bases</h2>
+    <div class="hidden" id="conversion">
+      <ul>
+        <li><strong>Décimal → Binaire</strong>: division par 2 (garder les restes)</li>
+        <li><strong>Binaire → Décimal</strong>: multiplication des bits par puissances de 2</li>
+        <li><strong>Décimal → Hexa</strong>: division par 16</li>
+      </ul>
+    </div>
+
+    <h2 onclick="toggle('combinatoire')">🔁 Circuits combinatoires</h2>
+    <div class="hidden" id="combinatoire">
+      <ul>
+        <li><strong>Multiplexeur</strong>: sélectionne une entrée parmi plusieurs</li>
+        <li><strong>Demultiplexeur</strong>: dirige une entrée vers une sortie choisie</li>
+        <li><strong>Additionneur</strong>: addition binaire</li>
+      </ul>
+    </div>
+
+    <h2 onclick="toggle('sequentiel')">⏱ Circuits séquentiels</h2>
+    <div class="hidden" id="sequentiel">
+      <ul>
+        <li><strong>Trigger (bascule)</strong>: mémoire binaire (RS, D, JK...)</li>
+        <li><strong>Compteur</strong>: compteur binaire (ascendant/descendant)</li>
+        <li>Utilise une horloge (clock)</li>
+      </ul>
+    </div>
+  
+    <h2 onclick="toggle('simulation')">🧪 Simulation de portes logiques</h2>
+    <div class="hidden" id="simulation">
+      <div class="simu">
+        <label>A:
+          <select id="inputA">
+            <option value="0">0</option>
+            <option value="1">1</option>
+          </select>
+        </label>
+
+        <label>B:
+          <select id="inputB">
+            <option value="0">0</option>
+            <option value="1">1</option>
+          </select>
+        </label>
+
+        <label>Porte:
+          <select id="gateType">
+            <option value="AND">AND</option>
+            <option value="OR">OR</option>
+            <option value="XOR">XOR</option>
+            <option value="NAND">NAND</option>
+            <option value="NOR">NOR</option>
+            <option value="XNOR">XNOR</option>
+            <option value="NOT">NOT (sur A)</option>
+          </select>
+        </label>
+
+        <button onclick="simulate()">Simuler</button>
+        <p>Résultat: <span id="result">?</span></p>
+      </div>
+    </div>
+  
+    <h2 onclick="toggle('simulation')">🧪 Simulation + Graphique</h2>
+    <div class="hidden" id="simulation">
+      <div class="simu">
+        <label>A:
+          <select id="inputA">
+            <option value="0">0</option>
+            <option value="1">1</option>
+          </select>
+        </label>
+
+        <label>B:
+          <select id="inputB">
+            <option value="0">0</option>
+            <option value="1">1</option>
+          </select>
+        </label>
+
+        <label>Porte:
+          <select id="gateType">
+            <option value="AND">AND</option>
+            <option value="OR">OR</option>
+            <option value="XOR">XOR</option>
+            <option value="NAND">NAND</option>
+            <option value="NOR">NOR</option>
+            <option value="XNOR">XNOR</option>
+            <option value="NOT">NOT (sur A)</option>
+          </select>
+        </label>
+
+        <button onclick="simulate()">Simuler</button>
+        <p>Résultat: <span id="result">?</span></p>
+      </div>
+
+      <div class="graph">
+        <canvas id="logicChart" width="400" height="250"></canvas>
+      </div>
+    </div>
+    <footer>
+      Réalisé par René Stéphane – Étudiant en Informatique – CNTEMAD Antsirabe – 2025
+    </footer>
+
+
+  </div>
+
+  <script>
+    function toggle(id) {
+      document.getElementById(id).classList.toggle("hidden");
+    }
+
+    // Attendre que le DOM soit prêt
+    window.onload = () => {
+      const ctx = document.getElementById('logicChart').getContext('2d');
+      const logicData = {
+        labels: ['AND', 'OR', 'XOR', 'NAND', 'NOR', 'XNOR', 'NOT'],
+        datasets: [{
+          label: 'Nombre de simulations',
+          data: [0, 0, 0, 0, 0, 0, 0],
+          backgroundColor: '#0a4c8b'
+        }]
+      };
+
+      const logicChart = new Chart(ctx, {
+        type: 'bar',
+        data: logicData,
+        options: {
+          scales: {
+            y: { beginAtZero: true, stepSize: 1 }
+          }
+        }
+      });
+
+      // Simulation function
+      window.simulate = function() {
+        const a = parseInt(document.getElementById('inputA').value);
+        const b = parseInt(document.getElementById('inputB').value);
+        const gate = document.getElementById('gateType').value;
+        let res = 0;
+
+        switch (gate) {
+          case "AND": res = a & b; logicData.datasets[0].data[0]++; break;
+          case "OR": res = a | b; logicData.datasets[0].data[1]++; break;
+          case "XOR": res = a ^ b; logicData.datasets[0].data[2]++; break;
+          case "NAND": res = !(a & b) ? 1 : 0; logicData.datasets[0].data[3]++; break;
+          case "NOR": res = !(a | b) ? 1 : 0; logicData.datasets[0].data[4]++; break;
+          case "XNOR": res = (a === b) ? 1 : 0; logicData.datasets[0].data[5]++; break;
+          case "NOT": res = !a ? 1 : 0; logicData.datasets[0].data[6]++; break;
+        }
+
+        document.getElementById("result").innerText = res;
+        logicChart.update();
+      };
+    };
+ 
+    function toggle(id) {
+      document.getElementById(id).classList.toggle("hidden");
+    }
+
+    function simulate() {
+      const a = parseInt(document.getElementById('inputA').value);
+      const b = parseInt(document.getElementById('inputB').value);
+      const gate = document.getElementById('gateType').value;
+      let res = 0;
+
+      switch (gate) {
+        case "AND": res = a & b; break;
+        case "OR": res = a | b; break;
+        case "XOR": res = a ^ b; break;
+        case "NAND": res = !(a & b) ? 1 : 0; break;
+        case "NOR": res = !(a | b) ? 1 : 0; break;
+        case "XNOR": res = (a === b) ? 1 : 0; break;
+        case "NOT": res = !a ? 1 : 0; break;
+      }
+
+      document.getElementById("result").innerText = res;
+    }
+    function toggle(id) {
+      document.getElementById(id).classList.toggle("hidden");
+    }
+  </script>
+</body>
+</html>
